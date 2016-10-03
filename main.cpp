@@ -64,14 +64,9 @@ int main(int argc, char* argv[])
   pthread_mutex_init(&mutex, 0);
 
   std::string wavDir = argv[1];
-  // ensure the presense of separator at the end of the path
-#ifdef WIN32
-  if (wavDir[wavDir.length() - 1] != '\\')
-    wavDir.append("\\");
-#else
+  // add a separator at the end of the path
   if (wavDir[wavDir.length() - 1] != '/')
     wavDir.append("/");
-#endif
 
   // number of currently running threads
   int runningThreadCount = 0;
